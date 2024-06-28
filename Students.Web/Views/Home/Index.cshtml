@@ -1,0 +1,14 @@
+﻿@using Students.Interfaces
+@using System.Globalization
+
+@inject ISharedResourcesService sharedResourcesService
+
+@{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
+    ViewData["Title"] = sharedResourcesService.GetString("HomePageTitle", cultureInfo);
+}
+
+<div class="text-center">
+    <h1 class="display-4">@sharedResourcesService.GetString("WelcomeMessage", cultureInfo)</h1>
+    <p>@sharedResourcesService.GetString("LearnAbout", cultureInfo) <a href="https://learn.microsoft.com/aspnet/core">@sharedResourcesService.GetString("ASPNetCore", cultureInfo)</a>.</p>
+</div>
